@@ -11,6 +11,7 @@ import {
   Center,
 } from "@mantine/core";
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
+import SubmitButton from "~/components/SubmitButton";
 
 export const loader = async ({ request }) => {
   await supabaseStrategy.checkSession(request, {
@@ -40,11 +41,11 @@ export default function Index() {
   const { error } = useLoaderData();
 
   return (
-    <div className="h-screen  grid grid-cols-2 relative">
-      <div className="relative inset-0  bg-sign-in-image bg-cover bg-center"></div>
+    <div className="h-screen  grid md:grid-cols-2 relative">
+      <div className="relative inset-0  bg-sign-in-image bg-cover bg-center hidden md:block "></div>
       <Center>
         <div className="p-4 max-w-fit mx-auto">
-          <Title order={1} align="center">
+          <Title order={1} align="center" className="dark:text-white">
             Log in to your account
           </Title>
           {error && <Text size="xs">{error.message}</Text>}
@@ -68,14 +69,7 @@ export default function Index() {
               required
             />
             <input type="hidden" name="type" value="login" />
-            <Button
-              className=" bg-dark-6  w-8/12 mx-auto "
-              color="dark"
-              size="md"
-              type="submit"
-            >
-              Sign in
-            </Button>
+            <SubmitButton type="sign-in">Sign In</SubmitButton>
           </Form>
           <div className=" mt-12 flex flex-col gap-4 w-8/12 mx-auto ">
             <Button
@@ -104,7 +98,7 @@ export default function Index() {
               Sign in with Github
             </Button>
           </div>
-          <Text size="md" align="center" mt={16}>
+          <Text size="md" align="center" mt={16} className="dark:text-white">
             Don't have an account?{" "}
             <Anchor component={Link} to="/sign-up">
               Sign up

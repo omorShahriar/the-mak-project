@@ -6,6 +6,7 @@ import { authenticator } from "~/utils/auth.server";
 
 import { getSession, commitSession } from "~/utils/sessions.server";
 import { prisma } from "~/utils/prismaClient.server";
+import SubmitButton from "~/components/SubmitButton";
 
 export const loader = async ({ request }) => {
   const session = await getSession(request.headers.get("Cookie"));
@@ -39,11 +40,11 @@ export const action = async ({ request }) => {
 export default function SignUp() {
   const { error } = useLoaderData();
   return (
-    <div className="h-screen  grid grid-cols-2 relative">
-      <div className="relative inset-0  bg-sign-up-image bg-cover bg-center"></div>
+    <div className="h-screen  grid md:grid-cols-2 relative">
+      <div className="relative inset-0  bg-sign-up-image bg-cover bg-center hidden md:block"></div>
       <Center>
         <div className="p-4 max-w-fit mx-auto">
-          <Title order={1} align="center">
+          <Title order={1} align="center" className=" dark:text-white">
             Register your account
           </Title>
           {error && error.message}
@@ -81,14 +82,7 @@ export default function SignUp() {
               size="md"
               required
             />
-            <Button
-              className=" bg-dark-6  w-8/12 mx-auto "
-              color="dark"
-              size="md"
-              type="submit"
-            >
-              Sign up
-            </Button>
+            <SubmitButton type="sign-up">Sign Up</SubmitButton>
           </Form>
           <div className=" mt-12 flex flex-col gap-4 w-8/12 mx-auto ">
             <Button

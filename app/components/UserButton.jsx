@@ -16,7 +16,7 @@ const UserButton = forwardRef(
         {...others}
       >
         <Group>
-          <Avatar radius="md" size="lg" color="green">
+          <Avatar radius="md" size="lg" color="dark">
             {avatarNameGenerator(user.name)}
           </Avatar>
         </Group>

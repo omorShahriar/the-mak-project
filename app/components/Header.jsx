@@ -149,7 +149,7 @@ export default function HeaderAction({ links, user }) {
             control={
               <button onClick={(event) => event.preventDefault()}>
                 <Center>
-                  <Avatar size="lg" radius="md" color="green">
+                  <Avatar size="lg" radius="md" color="dark">
                     {avatarNameGenerator(user.name)}
                   </Avatar>
                 </Center>
@@ -180,6 +180,7 @@ export default function HeaderAction({ links, user }) {
         ) : (
           <Button
             component={Link}
+            prefetch="intent"
             to="/sign-in"
             radius="sm"
             size="md"
